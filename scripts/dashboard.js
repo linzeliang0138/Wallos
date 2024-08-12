@@ -218,6 +218,31 @@ function cloneSubscription(event, id) {
     });
 }
 
+function finishPaymentSubscription(event, id) {
+  event.stopPropagation();
+  event.preventDefault();
+  fetch(`endpoints/subscription/finish.php?id=${id}`, {
+    method: 'PUT'
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(translate('network_response_error'));
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.success) {
+        showSuccessMessage('更新成功111');
+        fetchSubscriptions();
+      } else {
+        showErrorMessage('更新失败111');
+      }
+    })
+    .catch(error => {
+      showErrorMessage(error.message || '发生异常111');
+    });
+}
+
 function setSearchButtonStatus() {
 
   const nameInput = document.querySelector("#name");

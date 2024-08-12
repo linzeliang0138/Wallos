@@ -141,6 +141,11 @@ function printSubscriptions($subscriptions, $sort, $categories, $members, $i18n,
                         <?php include $imagePath . "images/siteicons/svg/clone.php"; ?>
                         <?= translate('clone', $i18n) ?>
                     </li>
+                    <li class="finish" title="<?= translate('finish', $i18n) ?>"
+                        onClick="finishPaymentSubscription(event, <?= $subscription['id'] ?>)">
+                        <?php include $imagePath . "images/siteicons/svg/finish.php"; ?>
+                        <?= translate('finish', $i18n) ?>
+                    </li>
                 </ul>
             </div>
             <div class="subscription-secondary">
